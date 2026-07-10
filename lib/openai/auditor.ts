@@ -24,7 +24,8 @@ const AUDIT_SCHEMA = {
 
 export async function runAudit(
   companyName: string,
-  websiteUrl: string
+  websiteUrl: string,
+  userId = ""
 ): Promise<AuditResult> {
   // Check website reachability
   let siteReachable = false
@@ -35,7 +36,7 @@ export async function runAudit(
     siteReachable = r.ok || r.status < 500
   } catch {}
 
-  const openai = await getOpenAIClient()
+  const openai = await getOpenAIClient(userId)
 
   const systemPrompt = `Você é um especialista em marketing digital e desenvolvimento web.
 Analise o site de uma empresa e retorne uma avaliação estruturada em JSON.
