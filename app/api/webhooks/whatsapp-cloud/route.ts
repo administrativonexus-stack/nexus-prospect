@@ -151,7 +151,7 @@ export async function POST(request: Request) {
       }
 
       // Reuses the existing SDR auto-respond toggle — campaign replies are treated like any other inbound message
-      void autoRespondSDR(leadId, msg.text)
+      void autoRespondSDR(leadId, msg.text, "")
     }
 
     return new NextResponse(null, { status: 200 })
