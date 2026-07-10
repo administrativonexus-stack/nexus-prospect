@@ -567,7 +567,7 @@ export function FinanceiroClient() {
                   <LabelList
                     dataKey="income"
                     position="top"
-                    formatter={(v: number) => v > 0 ? fmt(v) : ""}
+                    formatter={(v: unknown) => typeof v === "number" && v > 0 ? fmt(v) : ""}
                     style={{ fontSize: 10, fill: "#94a3b8", fontVariantNumeric: "tabular-nums" }}
                   />
                 </Bar>
