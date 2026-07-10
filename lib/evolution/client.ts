@@ -63,6 +63,14 @@ export async function sendPresence(
 
 export async function getQRCode(instanceName: string, userId: string): Promise<{ qrcode: string; status: string }> {
   const { baseUrl, apiKey } = await getEvolutionConfig(userId)
+
+  // Try to create the instance first — ignored if it already exists
+  await fetch(`${baseUrl}/instance/create`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", apikey: apiKey },
+    body: JSON.stringify({ instanceName, qrcode: true, integration: "WHATSAPP-BAILEYS" }),
+  }).catch(() => {})
+
   const res = await fetch(`${baseUrl}/instance/connect/${instanceName}`, {
     headers: { apikey: apiKey },
   })
