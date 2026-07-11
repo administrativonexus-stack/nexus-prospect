@@ -20,17 +20,12 @@ import { useRouter } from "next/navigation"
 
 const NAV_GROUPS = [
   {
-    label: null,
-    items: [
-      { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    ],
-  },
-  {
     label: "Prospecção",
     items: [
-      { href: "/prospecting", label: "Prospecção", icon: Search },
-      { href: "/crm",         label: "CRM",         icon: Kanban },
-      { href: "/conversations",label: "Conversas",  icon: MessageCircle },
+      { href: "/dashboard",     label: "Dashboard",   icon: LayoutDashboard },
+      { href: "/prospecting",   label: "Prospecção",  icon: Search },
+      { href: "/crm",           label: "CRM",         icon: Kanban },
+      { href: "/conversations", label: "Conversas",   icon: MessageCircle },
     ],
   },
   {
