@@ -30,7 +30,9 @@ export async function POST(request: Request) {
 
     await setSetting(key, value, user.id)
     return NextResponse.json({ ok: true })
-  } catch {
-    return NextResponse.json({ error: "Failed to save setting" }, { status: 500 })
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error("[settings POST] error:", msg, err)
+    return NextResponse.json({ error: msg || "Failed to save setting" }, { status: 500 })
   }
 }
